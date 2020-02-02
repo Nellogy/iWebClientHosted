@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'leaflet',
 ]
 
 MIDDLEWARE = [
@@ -101,15 +100,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
-LEAFLET_CONFIG = {
-    'DEFAULT_CENTER': (36.72, -4.428),
-    'DEFAULT_ZOOM': 16,
-    'MIN_ZOOM': 3,
-    'MAX_ZOOM': 18,
-    'RESET_VIEW': False,
-}
 
 
 # Internationalization
