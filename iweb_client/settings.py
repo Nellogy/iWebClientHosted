@@ -24,9 +24,9 @@ X_FRAME_OPTIONS = 'ALLOWALL'
 SECRET_KEY = '0vw0vps6nea-+q1no-#ux4-!-3!fba_9dbaica#1m^5go)n=(o'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['afternoon-lake-35508.herokuapp.com', '.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['afternoon-lake-35508.herokuapp.com', '.herokuapp.com']
 
 
 # Application definition
