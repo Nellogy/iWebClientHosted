@@ -117,7 +117,7 @@ def startLogin(request, user_id):
         print('not valid login ID')
         raise e
 
-    return redirect('http://127.0.0.1:8000/parkings/')
+    return redirect('https://iwebclient-host-16.herokuapp.com/parkings/')
 
 
 def userInfo(request):
