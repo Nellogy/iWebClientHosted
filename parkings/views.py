@@ -13,7 +13,6 @@ def index(request):
         weatherResponse = requests.get(weatherURL)
         weatherData = weatherResponse.json()
 
-        # TODO: user end point on AppEngine
         userResponse = requests.get(apiURL + 'users/byUserId/' + current_user_id)
         userData = userResponse.json()
 
@@ -69,9 +68,11 @@ def details(request, idParking):
         weatherResponse = requests.get(weatherURL)
         weatherData = weatherResponse.json()
 
-        # TODO: user end point on AppEngine
         userResponse = requests.get(apiURL + 'users/byUserId/' + current_user_id)
         userData = userResponse.json()
+
+        reportResponse = requests.get(apiURL + 'reports/byParking/' + idParking)
+        reportData = reportResponse.json()
 
         parkingResponse = requests.get(apiURL + 'openData/parking/' + str(idParking))
         parkingData = parkingResponse.json()
@@ -93,6 +94,7 @@ def details(request, idParking):
             'description': parkingData['description']['value'],
             'longitude': locationData['geometry']['coordinates'][0],
             'latitude': locationData['geometry']['coordinates'][1],
+            'reportList': reportData,
         }
         return render(request, 'parking/parkingDetails.html', context)
 
@@ -107,7 +109,6 @@ def startLogin(request, user_id):
     valid_user = False
 
     try:
-        # TODO: user end point on AppEngine
         userResponse = requests.get(apiURL + 'users/byUserId/' + user_id)
         userData = userResponse.json()
 
@@ -126,7 +127,6 @@ def startLogin(request, user_id):
 
 def userInfo(request):
     try:
-        # TODO: user end point on AppEngine
         userResponse = requests.get(apiURL + 'users/byUserId/' + current_user_id)
         userData = userResponse.json()
 
