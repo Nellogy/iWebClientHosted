@@ -119,7 +119,7 @@ def startLogin(request, user_id):
         raise e
 
     if(valid_user):
-        return redirect('https://iwebclient-host-16.herokuapp.com/parkings/')
+        return redirect('https://iwebclient-host-16.herokuapp.com/parkings')
     else:
         return redirect('https://iwebclient-host-16.herokuapp.com')
 
