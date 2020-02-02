@@ -104,6 +104,7 @@ def details(request, idParking):
 def startLogin(request, user_id):
 
     global current_user_id
+    valid_user = False
 
     try:
         # TODO: user end point on AppEngine
@@ -117,7 +118,10 @@ def startLogin(request, user_id):
         print('not valid login ID')
         raise e
 
-    return redirect('https://iwebclient-host-16.herokuapp.com/parkings/')
+    if(valid_user):
+        return redirect('https://iwebclient-host-16.herokuapp.com/parkings/')
+    else:
+        return redirect('https://iwebclient-host-16.herokuapp.com')
 
 
 def userInfo(request):
