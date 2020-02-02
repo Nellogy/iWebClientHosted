@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 
 weatherURL = 'https://api.openweathermap.org/data/2.5/weather?id=2514256&appid=a616b07331d06ea639f3b99c87ef5830&units=metric&lang=es'
 apiURL = 'https://ingenieriaweb-260616.appspot.com/api/v1/'
-current_user_id = ''
+current_user_id = '116640585785426680346'
 
 
 def index(request):
@@ -71,7 +71,7 @@ def details(request, idParking):
         userResponse = requests.get(apiURL + 'users/byUserId/' + current_user_id)
         userData = userResponse.json()
 
-        reportResponse = requests.get(apiURL + 'reports/byParking/' + idParking)
+        reportResponse = requests.get(apiURL + 'reports/byParking/' + str(idParking))
         reportData = reportResponse.json()
 
         parkingResponse = requests.get(apiURL + 'openData/parking/' + str(idParking))
@@ -79,6 +79,14 @@ def details(request, idParking):
 
         locationResponse = requests.get(apiURL + 'openData/location/' + str(idParking))
         locationData = locationResponse.json()
+
+        reportList = []
+        for item in reportData:
+            userSearchResponse = requests.get(apiURL + 'users/byUserId/' + item['user_id'])
+            userSearchData = userSearchResponse.json()
+            it = {'user_id': userSearchData[0]['full_name'],
+                  'user_text': item['text']}
+            reportList.append(it)
 
         context = {
             'weather': weatherData['weather'][0]['description'],
@@ -94,7 +102,7 @@ def details(request, idParking):
             'description': parkingData['description']['value'],
             'longitude': locationData['geometry']['coordinates'][0],
             'latitude': locationData['geometry']['coordinates'][1],
-            'reportList': reportData,
+            'reportList': reportList,
         }
         return render(request, 'parking/parkingDetails.html', context)
 

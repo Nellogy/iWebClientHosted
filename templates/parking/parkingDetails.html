@@ -143,15 +143,16 @@
                     </div>
                 </li>
                 </ul>
-                <div class="info-div">
-                    {% for key, value in reportList.items %}
+                <div class="lot-of-info-div">
+                {% for item in reportList %}
+                    {% for key, value in item.items %}
                         <div class="card">
-                            {% if key == 'user_id' %}
+                            {% if key == 'user_id'%}
                                 <div class="card-header">
                                     {{ value }}
                                 </div>
                             {% endif %}
-                            {% if key == 'text' %}
+                            {% if key == 'user_text' %}
                                 <div class="card-body">
                                     <p class="card-text">
                                         {{ value }}
@@ -160,6 +161,7 @@
                             {% endif %}
                         </div>
                     {% endfor %}
+                {% endfor %}
                 </div>
             </div>
         </div>
