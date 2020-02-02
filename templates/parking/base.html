@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+  .container-fluid {
+    padding: 60px 50px;
+  }
+  @media screen and (max-width: 768px) {
+    .col-sm-4 {
+      text-align: center;
+      margin: 25px 0;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  .bg-4 {
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+    .my-custom-scrollbar {
+    position: relative;
+    height: 400px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    }
+
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+    .table-row{
+     cursor:pointer;
+    }
+  p {font-size: 16px;}
+   #myInput {
+    padding: 20px;
+    margin-top: -6px;
+    border: 0;
+    border-radius: 0;
+    background: #f1f1f1;
+  }
+  </style>
+
+  <script>
+      $(document).ready(function($) {
+        $(".table-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
+      });
+
+  </script>
+
+  <script>
+      $(document).ready(function($) {
+        $(".table-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
+      });
+
+  </script>
+    {% block header %}
+    {% endblock %}
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">PARKAROUND</a>
+            </div>
+            <div class="container">
+                <div class="navbar-nav navbar-right" style="padding-top: 15px">
+                    <span class="glyphicon glyphicon-cloud"></span> {{ weather }}
+                    <span class="glyphicon glyphicon-certificate"></span> {{ temperature }}
+                    <span class="glyphicon glyphicon-tint"></span> {{ humidity }}
+                    <span class=""></span> |
+                    <span class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">{{ user_name }}
+                        <span class="glyphicon glyphicon-user profile"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href={% url 'parkings:userInfo' %}>Edit</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{% url 'parkings:logOut' %}">Sign out</a></li>
+                    </ul>
+                </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <!-- Footer -->
+    <footer class="container-fluid bg-4 text-center">
+      <p>Bootstrap Theme iWeb project</p>
+    </footer>
+</body>
+</html>
